@@ -2,26 +2,22 @@ import * as React from 'react';
 import { Text, View, StyleSheet, ImageBackground, Button } from 'react-native';
 import Constants from 'expo-constants';
 
-import colors from '../../styles/colors';
+import colors from '../styles/colors';
 
-const image = require('../../assets/fremdMerchMainBg.png');
+// const image = require('../assets/fremdMerchMainBg.png');
 
 export default function Splash() {
   return (
-      <ImageBackground source={image} resizeMode='contain' style={styles.logo}>
+    //   <ImageBackground source={image} resizeMode='contain' style={styles.logo}>
         <View style={styles.buttonHolder}>
-          <Button style={styles.logInButton}
-            
-          >
-            <Text style={styles.myText}>Log In</Text>
-          </Button>
+          {/* <Button style={styles.logInButton}
+            title="log in"
+          />
           <Button style={styles.signUpButton}
-            
-          >
-            <Text style={styles.myTextTwo}>Sign Up</Text>
-          </Button>
+            title="sign up"
+          /> */}
         </View>
-      </ImageBackground>
+    //   </ImageBackground>
   );
 }
 
@@ -34,16 +30,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  myText: {
-    color: 'white',
-    fontWeight: '500',
-    fontSize: 12,
-  },
-  myTextTwo: {
-    color: colors.main,
-    fontWeight: '500',
-    fontSize: 12,
   },
   signUpButton: {
     width: 130,
