@@ -4,26 +4,26 @@ import Constants from 'expo-constants';
 
 import colors from '../styles/colors';
 
-// const image = require('../assets/fremdMerchMainBg.png');
+const image = require('../assets/fremdMerchMainBg.png');
 
-export default function Splash() {
+function SplashScreen() {
   return (
-    //   <ImageBackground source={image} resizeMode='contain' style={styles.logo}>
+      <ImageBackground source={image} resizeMode='contain' style={styles.logo}>
         <View style={styles.buttonHolder}>
-          {/* <Button style={styles.logInButton}
+          <Button style={styles.logInButton}
             title="log in"
           />
           <Button style={styles.signUpButton}
             title="sign up"
-          /> */}
+          />
         </View>
-    //   </ImageBackground>
+      </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   logInButton: {
-    width: 130,
+    width: 200,
     height: 35,
     backgroundColor: colors.main,
     marginBottom: 50,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   signUpButton: {
-    width: 130,
+    width: 200,
     height: 35,
     backgroundColor: colors.lightGrey,
     marginBottom: 50,
@@ -43,12 +43,13 @@ const styles = StyleSheet.create({
   },
   buttonHolder: {
     flexDirection: 'row',
-    padding: 'margin',
+    padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 606,
+    marginTop: 565,
   },
   logo: {
     flex: 1,
   }
 });
+export default SplashScreen;
