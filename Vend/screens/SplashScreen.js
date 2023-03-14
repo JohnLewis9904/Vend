@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, ImageBackground, Button } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, Pressable } from 'react-native';
 import Constants from 'expo-constants';
 
 import colors from '../styles/colors';
@@ -10,12 +10,13 @@ function SplashScreen() {
   return (
       <ImageBackground source={image} resizeMode='contain' style={styles.logo}>
         <View style={styles.buttonHolder}>
-          <Button style={styles.logInButton}
-            title="log in"
-          />
-          <Button style={styles.signUpButton}
-            title="sign up"
-          />
+          <Pressable style={styles.logInButton}>
+            <Text style={styles.myText}>Log In</Text>
+          </Pressable>
+          <Pressable style={styles.signUpButton}>
+            <Text style={styles.myTextTwo}>Sign Up</Text>
+          </Pressable>
+          
         </View>
       </ImageBackground>
   );
@@ -23,7 +24,7 @@ function SplashScreen() {
 
 const styles = StyleSheet.create({
   logInButton: {
-    width: 200,
+    width: 130,
     height: 35,
     backgroundColor: colors.main,
     marginBottom: 50,
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   signUpButton: {
-    width: 200,
+    width: 130,
     height: 35,
     backgroundColor: colors.lightGrey,
     marginBottom: 50,
@@ -50,6 +51,16 @@ const styles = StyleSheet.create({
   },
   logo: {
     flex: 1,
+  },
+  myText: {
+    color: 'white',
+    fontWeight: '500',
+    fontSize: 12,
+  },
+  myTextTwo: {
+    color: colors.main,
+    fontWeight: '500',
+    fontSize: 12,
   }
 });
 export default SplashScreen;
