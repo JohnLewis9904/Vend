@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, ImageBackground, Pressable } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, Pressable, Image } from 'react-native';
 import Constants from 'expo-constants';
 
 import colors from '../styles/colors';
@@ -8,7 +8,10 @@ const image = require('../assets/fremdMerchMainBg.png');
 
 function SplashScreen() {
   return (
-      <ImageBackground source={image} resizeMode='contain' style={styles.logo}>
+      <ImageBackground source={image} resizeMode='stretch' style={styles.logo}>
+        <View style={styles.imageholder}>
+          <Image source={require('../assets/vendLogo-removebg-preview.png')} />
+        </View>
         <View style={styles.buttonHolder}>
           <Pressable style={styles.logInButton}>
             <Text style={styles.myText}>Log In</Text>
@@ -47,7 +50,6 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 565,
   },
   logo: {
     flex: 1,
@@ -61,6 +63,9 @@ const styles = StyleSheet.create({
     color: colors.main,
     fontWeight: '500',
     fontSize: 12,
+  },
+  imageholder: {
+    alignItems: 'center'
   }
 });
 export default SplashScreen;
