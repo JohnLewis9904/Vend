@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, SafeAreaView, Image } from 'react-native';
 import Constants from 'expo-constants';
-import UserInput from '../components/UserInputBox';
-import SignInBar from '../components/SignInBar';
-import SIB from '../../components/SIB';
-import SignInSources from '../../components/SignInSources';
+import UserInputBox from '../components/UserInputBox';
+import SignInButton from '../components/SignInButton';
+import SignInSources from '../components/SignInSources';
 
 import Checkbox from 'expo-checkbox';
 import { useState } from 'react';
@@ -52,9 +51,9 @@ export default function SignIn() {
         <Text style={[styles.title, { marginBottom: '5%' }]}>
           Welcome back!
         </Text>
-        <UserInput fn="Username" />
-        <UserInput fn="Password" />
-        <SIB title={'Login'} />
+        <UserInputBox fn="Username" />
+        <UserInputBox fn="Password" />
+        <SignInButton title={'Login'} />
         <View style={styles.barArea}>
           <Checkbox
             style={styles.checkbox}
