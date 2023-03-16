@@ -4,17 +4,17 @@ import Constants from 'expo-constants';
 import UserInputBox from '../components/UserInputBox';
 import SignInButton from '../components/SignInButton';
 import SignInSources from '../components/SignInSources';
-
-import Checkbox from 'expo-checkbox';
+import {
+    Checkbox
+  } from 'react-native-paper';
 import { useState } from 'react';
 
 // You can import from local files
-import colors from '../../config/colors';
+import colors from '../styles/colors';
 
 // or any pure javascript modules available in npm
-import { Card } from 'react-native-paper';
 
-export default function SignIn() {
+export default function SignInScreen() {
   const [isChecked, setChecked] = useState(false);
 
   return (
@@ -55,12 +55,11 @@ export default function SignIn() {
         <UserInputBox fn="Password" />
         <SignInButton title={'Login'} />
         <View style={styles.barArea}>
-          <Checkbox
-            style={styles.checkbox}
-            color={isChecked ? colors.electric : undefined}
+        <Checkbox
+              color={isChecked ? colors.electric : undefined}
             value={isChecked}
             onValueChange={setChecked}
-          />
+            />
           <Text
             style={[
               { color: colors.slate },
@@ -72,7 +71,7 @@ export default function SignIn() {
           </Text>
         </View>
         <Image
-          source={require('../../assets/border.png')}
+          source={require('../assets/border.png')}
           style={{
             width: '82%',
             height: 20,
@@ -83,15 +82,15 @@ export default function SignIn() {
         <View style={styles.pagination}>
           <SignInSources
             style={styles.box}
-            path={require('../../assets/google.jpg')}
+            path={require('../assets/google.jpg')}
           />
           <SignInSources
             style={styles.box}
-            path={require('../../assets/google.jpg')}
+            path={require('../assets/google.jpg')}
           />
           <SignInSources
             style={styles.box}
-            path={require('../../assets/google.jpg')}
+            path={require('../assets/google.jpg')}
           />
         </View>
       </View>
