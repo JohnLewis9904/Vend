@@ -6,17 +6,23 @@ import colors from '../styles/colors';
 
 const image = require('../assets/fremdMerchMainBg.png');
 
-function SplashScreen() {
+function SplashScreen({navigation}) {
   return (
       <ImageBackground source={image} resizeMode='stretch' style={styles.logo}>
         <View style={styles.imageholder}>
           <Image source={require('../assets/vendLogo-removebg-preview.png')} />
         </View>
         <View style={styles.buttonHolder}>
-          <Pressable style={styles.logInButton}>
+          <Pressable 
+            style={styles.logInButton}
+            onPress={() => navigation.navigate("")}
+          >
             <Text style={styles.myText}>Log In</Text>
           </Pressable>
-          <Pressable style={styles.signUpButton}>
+          <Pressable 
+            style={styles.signUpButton}
+            onPress={() => navigation.navigate("SignInScreen")}
+          >
             <Text style={styles.myTextTwo}>Sign Up</Text>
           </Pressable>
           
