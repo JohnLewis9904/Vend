@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         marginVertical: "3%",
 
     marginHorizontal: "8%",
-    width: Constants.statusBarWidth,
+    width: '100%',
     backgroundColor: colors.electric,
     alignItems: 'center',
     justifyContent: 'center',

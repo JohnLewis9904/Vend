@@ -4,9 +4,9 @@ import Constants from 'expo-constants';
 import UserInputBox from '../components/UserInputBox';
 import SignInButton from '../components/SignInButton';
 import SignInSources from '../components/SignInSources';
-import {
-    Checkbox
-  } from 'react-native-paper';
+// import {
+//     Checkbox
+//   } from 'react-native-paper';
 import { useState } from 'react';
 
 // You can import from local files
@@ -18,8 +18,9 @@ export default function SignInScreen() {
   const [isChecked, setChecked] = useState(false);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View>
+<SafeAreaView style={styles.container}>
+
+  <View>
        
         <View style={styles.header}>
           <Text style={[styles.options, { color: colors.electric }]}>
@@ -35,7 +36,9 @@ export default function SignInScreen() {
               { backgroundColor: colors.electric },
               { borderTopRightRadius: 0 },
               { borderBottomRightRadius: 0 },
-            ]}></View>
+            ]}>
+
+            </View>
           <View
             style={[
               styles.bar,
@@ -45,7 +48,7 @@ export default function SignInScreen() {
             ]}></View>
         </View>
 
-        <Text style={[styles.title, { fontSize: 24 }, { fontWeight: '650' }]}>
+        <Text style={[styles.title, { fontSize: 24 }, { fontWeight: 'heavy' }]}>
           Sign In
         </Text>
         <Text style={[styles.title, { marginBottom: '5%' }]}>
@@ -54,13 +57,13 @@ export default function SignInScreen() {
         <UserInputBox fn="Username" />
         <UserInputBox fn="Password" />
         <SignInButton title={'Login'} />
-        <View style={styles.barArea}>
-        <Checkbox
+        {/* <View style={styles.barArea}> */}
+        {/* <Checkbox
               color={isChecked ? colors.electric : undefined}
             value={isChecked}
             onValueChange={setChecked}
-            />
-          <Text
+            /> */}
+          {/* <Text
             style={[
               { color: colors.slate },
               { marginLeft: '2%' },
@@ -69,8 +72,8 @@ export default function SignInScreen() {
             ]}>
             Remember me
           </Text>
-        </View>
-        <Image
+        </View> */}
+        {/* <Image
           source={require('../assets/border.png')}
           style={{
             width: '82%',
@@ -92,8 +95,8 @@ export default function SignInScreen() {
             style={styles.box}
             path={require('../assets/google.jpg')}
           />
+        </View> */}
         </View>
-      </View>
     </SafeAreaView>
   );
 }
@@ -102,8 +105,8 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    justifyContent: 'top',
-    paddingTop: Constants.statusBarHeight,
+    justifyContent: 'center',
+    paddingTop: '10%',
     backgroundColor: '#fbf9f9',
   },
   barArea: {

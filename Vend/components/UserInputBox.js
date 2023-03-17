@@ -21,7 +21,7 @@ function UserInputBox({ fn, keyboard, secureTextEntry, input, nums }) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'left',
+    // alignItems: 'flex-start',
   },
   input: {
     marginHorizontal: '8%',
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
     width: '84%',
 
     backgroundColor: 'white',
-    backgroundOpacity: 0.5,
     color: colors.lightestgray,
     borderRadius: 8,
     borderColor: colors.lightAccentGrey,
