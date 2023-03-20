@@ -2,7 +2,7 @@ import * as React from "react";
 import { Text, View, StyleSheet, SafeAreaView, Image } from "react-native";
 import Constants from "expo-constants";
 import UserInputBox from "../components/UserInputBox";
-import SignInButton from "../components/SignInButton";
+import SIB from "../components/SignInButton";
 import SignInSources from "../components/SignInSources";
 // import {
 //     Checkbox
@@ -13,9 +13,23 @@ import { useState } from "react";
 import colors from "../styles/colors";
 
 // or any pure javascript modules available in npm
+import { getAuth } from '../firebase';
+const auth = getAuth();
+
+const handleSignUp = () => {
+  auth
+  .createUserWithEmailAndPassword(email, password)
+  .then(userCredentials => {
+    const user = userCredentials.user;
+    console.log(user.email);
+  })
+  .catch(error => alert(error.message))
+}
 
 export default function SignInScreen() {
   const [isChecked, setChecked] = useState(false);
+  const [email, setEmail] = userState('')
+  const [password, setPassword] = userState('')
 
   return (
     <SafeAreaView style={styles.container}>
@@ -51,9 +65,9 @@ export default function SignInScreen() {
         <Text style={[styles.title, { marginBottom: "5%" }]}>
           Welcome back!
         </Text>
-        <UserInputBox fn="Username" />
-        <UserInputBox fn="Password" />
-        <SignInButton title={"Login"} />
+        <UserInputBox fn="Username" onChangeText={text => setEmail(text)}/>
+        <UserInputBox fn="Password" onChangeText={text => setPassword(text)}/>
+        <SIB title={"Login"} />
         <View style={styles.barArea}>
           {/* <Checkbox
               color={isChecked ? colors.electric : undefined}
