@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { Text, View, StyleSheet, SafeAreaView, Image } from 'react-native';
-import Constants from 'expo-constants';
-import UserInputBox from '../components/UserInputBox';
-import SignInButton from '../components/SignInButton';
-import SignInSources from '../components/SignInSources';
+import * as React from "react";
+import { Text, View, StyleSheet, SafeAreaView, Image } from "react-native";
+import Constants from "expo-constants";
+import UserInputBox from "../components/UserInputBox";
+import SignInButton from "../components/SignInButton";
+import SignInSources from "../components/SignInSources";
 // import {
 //     Checkbox
 //   } from 'react-native-paper';
-import { useState } from 'react';
+import { useState } from "react";
 
 // You can import from local files
-import colors from '../styles/colors';
+import colors from "../styles/colors";
 
 // or any pure javascript modules available in npm
 
@@ -18,10 +18,8 @@ export default function SignInScreen() {
   const [isChecked, setChecked] = useState(false);
 
   return (
-<SafeAreaView style={styles.container}>
-
-  <View>
-       
+    <SafeAreaView style={styles.container}>
+      <View>
         <View style={styles.header}>
           <Text style={[styles.options, { color: colors.electric }]}>
             Login
@@ -32,124 +30,122 @@ export default function SignInScreen() {
           <View
             style={[
               styles.bar,
-              { marginLeft: '8%' },
+              { marginLeft: "8%" },
               { backgroundColor: colors.electric },
               { borderTopRightRadius: 0 },
               { borderBottomRightRadius: 0 },
-            ]}>
-
-            </View>
+            ]}
+          ></View>
           <View
             style={[
               styles.bar,
-              { marginRight: '8%' },
+              { marginRight: "8%" },
               { borderTopLeftRadius: 0 },
               { borderBottomLeftRadius: 0 },
-            ]}></View>
+            ]}
+          ></View>
         </View>
-
-        <Text style={[styles.title, { fontSize: 24 }, { fontWeight: 'heavy' }]}>
+        <Text style={[styles.title, { fontSize: 24 }, { fontWeight: "heavy" }]}>
           Sign In
         </Text>
-        <Text style={[styles.title, { marginBottom: '5%' }]}>
+        <Text style={[styles.title, { marginBottom: "5%" }]}>
           Welcome back!
         </Text>
         <UserInputBox fn="Username" />
         <UserInputBox fn="Password" />
-        <SignInButton title={'Login'} />
-        {/* <View style={styles.barArea}> */}
-        {/* <Checkbox
+        <SignInButton title={"Login"} />
+        <View style={styles.barArea}>
+          {/* <Checkbox
               color={isChecked ? colors.electric : undefined}
             value={isChecked}
             onValueChange={setChecked}
-            /> */}
-          {/* <Text
+            />  */}
+          <Text
             style={[
               { color: colors.slate },
-              { marginLeft: '2%' },
+              { marginLeft: "2%" },
               { marginTop: 1 },
               { fontSize: 16 },
-            ]}>
+            ]}
+          >
             Remember me
           </Text>
-        </View> */}
-        {/* <Image
-          source={require('../assets/border.png')}
+        </View>
+        <Image
+          source={require("../assets/border.png")}
           style={{
-            width: '82%',
+            width: "82%",
             height: 20,
-            marginHorizontal: '8%',
-            marginTop: '9%',
+            marginHorizontal: "8%",
+            marginTop: "9%",
           }}
         />
         <View style={styles.pagination}>
           <SignInSources
             style={styles.box}
-            path={require('../assets/google.jpg')}
+            path={require("../assets/google.jpg")}
           />
           <SignInSources
             style={styles.box}
-            path={require('../assets/google.jpg')}
+            path={require("../assets/google.jpg")}
           />
           <SignInSources
             style={styles.box}
-            path={require('../assets/google.jpg')}
+            path={require("../assets/google.jpg")}
           />
-        </View> */}
         </View>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
-    justifyContent: 'center',
-    paddingTop: '10%',
-    backgroundColor: '#fbf9f9',
+    justifyContent: "center",
+    paddingTop: "10%",
+    backgroundColor: "#fbf9f9",
   },
   barArea: {
-    flexDirection: 'row',
-    marginTop: '1%',
+    flexDirection: "row",
+    marginTop: "1%",
   },
-  splash:{
+  splash: {
     justifyContent: "center",
     height: "20%",
     width: "40%",
   },
   bar: {
     height: 3,
-    width: '42%',
+    width: "42%",
     backgroundColor: colors.lightestgray,
     borderRadius: 2,
   },
   header: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
   },
   options: {
     fontSize: 15,
     fontWeight: 500,
-    paddingHorizontal: '15%',
-    paddingTop: '5%',
-    paddingBottom: '3%',
+    paddingHorizontal: "15%",
+    paddingTop: "5%",
+    paddingBottom: "3%",
     color: colors.slate,
   },
   title: {
-    marginLeft: '8%',
-    paddingTop: '4%',
+    marginLeft: "8%",
+    paddingTop: "4%",
     fontSize: 16,
     color: colors.slate,
   },
   checkbox: {
-    marginLeft: '8%',
+    marginLeft: "8%",
     borderRadius: 5,
   },
-    pagination: {
+  pagination: {
     flex: 1,
-    flexDirection: 'row',
-
+    flexDirection: "row",
   },
 });

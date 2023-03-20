@@ -1,13 +1,11 @@
-import React from 'react';
-import { TouchableOpacity, Linking, Text, StyleSheet } from 'react-native';
-import colors from '../styles/colors';
-import Constants from 'expo-constants';
+import React from "react";
+import { TouchableOpacity, Linking, Text, StyleSheet } from "react-native";
+import colors from "../styles/colors";
+import Constants from "expo-constants";
 
 function SIB({ title, onPress }) {
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={styles.button}>
+    <TouchableOpacity onPress={onPress} style={styles.button}>
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );
@@ -16,13 +14,13 @@ function SIB({ title, onPress }) {
 const styles = StyleSheet.create({
   button: {
     height: 35,
-        marginVertical: "3%",
+    marginVertical: "3%",
 
     marginHorizontal: "8%",
-    width: '100%',
+    width: "100%",
     backgroundColor: colors.electric,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 8,
   },
   text: {
