@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   logInButton: {
     width: 130,
     height: 35,
-    backgroundColor: colors.main,
+    backgroundColor: colors.electric,
     marginBottom: 50,
     borderRadius: 8,
     justifyContent: 'center',
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   myTextTwo: {
-    color: colors.main,
+    color: colors.electric,
     fontWeight: '500',
     fontSize: 12,
   },

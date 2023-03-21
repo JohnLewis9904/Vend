@@ -41,7 +41,7 @@ export default function SignInScreen() {
   const handleLogIn = () => {
     if (email !== "" && password !== "") {
       signInWithEmailAndPassword(auth, email, password)
-        .then(() => console.log("Login success"))
+        .then(() => {console.log("Login success"); navigation.navigate("fake")})
         .catch((err) => Alert.alert("Login error", err.message));
     }
   };
@@ -87,7 +87,7 @@ export default function SignInScreen() {
         />
         <SignInButton
           title={"Login"}
-          onPress={() => navigation.navigate("Fake")}
+          onPress={handleLogIn}
         />
         <View style={styles.barArea}>
           {/* <Checkbox
