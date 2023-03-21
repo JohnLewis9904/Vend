@@ -13,8 +13,8 @@ import { useState } from "react";
 import colors from "../styles/colors";
 
 // or any pure javascript modules available in npm
-import { getAuth } from '../firebase';
-const auth = getAuth();
+import { signInWithEmailAndPassword } from "@firebase/auth";
+import { auth } from "../firebase";
 
 const handleSignUp = () => {
   auth
@@ -28,8 +28,8 @@ const handleSignUp = () => {
 
 export default function SignInScreen() {
   const [isChecked, setChecked] = useState(false);
-  const [email, setEmail] = userState('')
-  const [password, setPassword] = userState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   return (
     <SafeAreaView style={styles.container}>
