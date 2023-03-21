@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     marginVertical: "3%",
 
     marginHorizontal: "8%",
-    width: "100%",
+    width: "84%",
     backgroundColor: colors.electric,
     alignItems: "center",
     justifyContent: "center",
