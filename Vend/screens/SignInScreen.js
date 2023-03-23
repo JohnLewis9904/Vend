@@ -6,11 +6,13 @@ import {
   SafeAreaView,
   Image,
   Alert,
+  Pressable,
 } from "react-native";
-import Constants from "expo-constants";
+//import Constants from "expo-constants";
 import UserInputBox from "../components/UserInputBox";
 import SignInButton from "../components/SignInButton";
 import SignInSources from "../components/SignInSources";
+import GoogleButton from 'react-google-button'
 // import {
 //     Checkbox
 //   } from 'react-native-paper';
@@ -20,31 +22,63 @@ import { useState } from "react";
 import colors from "../styles/colors";
 
 // or any pure javascript modules available in npm
-import { signInWithEmailAndPassword } from "@firebase/auth";
-import { auth } from "../firebase";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
+import { auth, provider } from "../firebase";
 
-export default function SignInScreen() {
-  const [isChecked, setChecked] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function SignInScreen({navigation}) {
+  //const [isChecked, setChecked] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSignUp = () => {
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log(user.email);
-      })
-      .catch((error) => alert(error.message));
-  };
+  // const handleSignUp = () => {
+  //   auth
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .then((userCredentials) => {
+  //       const user = userCredentials.user;
+  //       console.log(user.email);
+  //     })
+  //     .catch((error) => alert(error.message));
+  // };
 
   const handleLogIn = () => {
-    if (email !== "" && password !== "") {
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => {console.log("Login success"); navigation.navigate("fake")})
-        .catch((err) => Alert.alert("Login error", err.message));
-    }
-  };
+    console.log("email is: " + email)
+    signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+    navigation.navigate("fake")
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+  }
+
+  // const signInWithGoogle = () => {
+  //   signInWithPopup(auth, provider)
+  // .then((result) => {
+  //   // This gives you a Google Access Token. You can use it to access the Google API.
+  //   // const credential = GoogleAuthProvider.credentialFromResult(result);
+  //   // const token = credential.accessToken;
+  //   // The signed-in user info.
+  //   const user = result.user;
+  //   console.log("Login success")
+  //   navigation.navigate("fake")
+  //   // IdP data available using getAdditionalUserInfo(result)
+  //   // name = user.displayName, email = user.email etc
+  // }).catch((error) => {
+  //   // Handle Errors here.
+  //   const errorCode = error.code;
+  //   const errorMessage = error.message;
+  //   // The email of the user's account used.
+  //   const email = error.customData.email;
+  //   // The AuthCredential type that was used.
+  //   const credential = GoogleAuthProvider.credentialFromError(error);
+  //   console.log("Issue with login")
+  //   // ...
+  // });
+  // }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -80,10 +114,10 @@ export default function SignInScreen() {
         <Text style={[styles.title, { marginBottom: "5%" }]}>
           Welcome back!
         </Text>
-        <UserInputBox fn="Username" onChangeText={(text) => setEmail(text)} />
+        <UserInputBox fn="Username" onChangeText={text => setEmail(text)} />
         <UserInputBox
           fn="Password"
-          onChangeText={(text) => setPassword(text)}
+          onChangeText={text => setPassword(text)}
         />
         <SignInButton
           title={"Login"}
@@ -116,18 +150,12 @@ export default function SignInScreen() {
           }}
         />
         <View style={styles.pagination}>
-          <SignInSources
-            style={styles.box}
-            path={require("../assets/google.jpg")}
-          />
-          <SignInSources
-            style={styles.box}
-            path={require("../assets/google.jpg")}
-          />
-          <SignInSources
-            style={styles.box}
-            path={require("../assets/google.jpg")}
-          />
+        <Pressable
+          onClick={() => { console.log('Google button clicked') }}
+          style={styles.pagination}
+        >
+          <Image source={'../assets/googlebutton.PNG'}/>
+        </Pressable>
         </View>
       </View>
     </SafeAreaView>
