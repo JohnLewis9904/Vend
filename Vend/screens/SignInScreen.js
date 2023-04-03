@@ -41,7 +41,6 @@ export default function SignInScreen({navigation}) {
   // };
 
   const handleLogIn = () => {
-    console.log("email is: " + email)
     signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
@@ -52,6 +51,26 @@ export default function SignInScreen({navigation}) {
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    console.log("" + errorCode + " " + errorMessage)
+  });
+  }
+
+  const handleSignUp = () => {
+    auth()
+  .createUserWithEmailAndPassword(email, password)
+  .then(() => {
+    console.log('User account created & signed in!');
+  })
+  .catch(error => {
+    if (error.code === 'auth/email-already-in-use') {
+      console.log('That email address is already in use!');
+    }
+
+    if (error.code === 'auth/invalid-email') {
+      console.log('That email address is invalid!');
+    }
+
+    console.error(error);
   });
   }
 
@@ -79,7 +98,6 @@ export default function SignInScreen({navigation}) {
   //   // ...
   // });
   // }
-
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -114,10 +132,13 @@ export default function SignInScreen({navigation}) {
         <Text style={[styles.title, { marginBottom: "5%" }]}>
           Welcome back!
         </Text>
-        <UserInputBox fn="Username" onChangeText={text => setEmail(text)} />
+        <UserInputBox fn="Username" onChangeText={text => setEmail(text)}
+        value={this.email}
+        />
         <UserInputBox
           fn="Password"
           onChangeText={text => setPassword(text)}
+          value={password}
         />
         <SignInButton
           title={"Login"}
