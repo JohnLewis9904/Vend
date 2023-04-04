@@ -9,7 +9,6 @@ import {
   Pressable,
 } from "react-native";
 //import Constants from "expo-constants";
-import UserInputBox from "../components/UserInputBox";
 import SignInButton from "../components/SignInButton";
 import SignInSources from "../components/SignInSources";
 import GoogleButton from 'react-google-button'
@@ -24,21 +23,12 @@ import colors from "../styles/colors";
 // or any pure javascript modules available in npm
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
 import { auth, provider } from "../firebase";
+import { TextInput } from "react-native-paper";
 
 export default function SignInScreen({navigation}) {
   //const [isChecked, setChecked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  // const handleSignUp = () => {
-  //   auth
-  //     .createUserWithEmailAndPassword(email, password)
-  //     .then((userCredentials) => {
-  //       const user = userCredentials.user;
-  //       console.log(user.email);
-  //     })
-  //     .catch((error) => alert(error.message));
-  // };
 
   const handleLogIn = () => {
     signInWithEmailAndPassword(auth, email, password)
@@ -56,23 +46,14 @@ export default function SignInScreen({navigation}) {
   }
 
   const handleSignUp = () => {
-    auth()
-  .createUserWithEmailAndPassword(email, password)
-  .then(() => {
-    console.log('User account created & signed in!');
-  })
-  .catch(error => {
-    if (error.code === 'auth/email-already-in-use') {
-      console.log('That email address is already in use!');
-    }
-
-    if (error.code === 'auth/invalid-email') {
-      console.log('That email address is invalid!');
-    }
-
-    console.error(error);
-  });
-  }
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        console.log('Registered with:', user.email);
+      })
+      .catch((error) => alert(error.message));
+  };
 
   // const signInWithGoogle = () => {
   //   signInWithPopup(auth, provider)
@@ -132,10 +113,10 @@ export default function SignInScreen({navigation}) {
         <Text style={[styles.title, { marginBottom: "5%" }]}>
           Welcome back!
         </Text>
-        <UserInputBox fn="Username" onChangeText={text => setEmail(text)}
+        <TextInput fn="Username" onChangeText={text => setEmail(text)}
         value={this.email}
         />
-        <UserInputBox
+        <TextInput
           fn="Password"
           onChangeText={text => setPassword(text)}
           value={password}
@@ -143,6 +124,10 @@ export default function SignInScreen({navigation}) {
         <SignInButton
           title={"Login"}
           onPress={handleLogIn}
+        />
+        <SignInButton
+          title={"Sign Up"}
+          onPress={handleSignUp}
         />
         <View style={styles.barArea}>
           {/* <Checkbox
@@ -161,6 +146,7 @@ export default function SignInScreen({navigation}) {
             Remember me
           </Text>
         </View>
+        <Text>{this.email}</Text>
         <Image
           source={require("../assets/border.png")}
           style={{
