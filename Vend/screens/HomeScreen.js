@@ -27,7 +27,7 @@ function HomeScreen() {
         <View style={styles.iconPlate}>
           <Image
             style={styles.profileIcon}
-            source={require("../assets/monkeyBanner.jpg")}
+            source={require("../assets/splash.png")}
           />
         </View>
       </View>
@@ -40,7 +40,7 @@ function HomeScreen() {
               body="Check out whats releasing this Spring 2023 season!"
               btnName="Learn More"
               link="https://www.apple.com/"
-              path={require("../assets/springReleaseBanner.jpeg")}
+              path={require("../assets/splash.png")}
             />
           </View>
           <View style={styles.bannerArea}>
@@ -49,7 +49,7 @@ function HomeScreen() {
               body="Spend and Save this Spring reak!"
               btnName="Explore"
               link="https://www.apple.com/"
-              path={require("../assets/bannerIcon2.jpg")}
+              path={require("../assets/splash.png")}
             />
           </View>
           <View style={styles.bannerArea}>
@@ -58,7 +58,7 @@ function HomeScreen() {
               body="Que cono!"
               btnName="Monkify"
               link="https://www.apple.com/"
-              path={require("../assets/monkeyBanner.jpg")}
+              path={require("../assets/splash.png")}
             />
           </View>
         </ScrollView>
@@ -77,19 +77,19 @@ function HomeScreen() {
           <View style={styles.bannerArea}>
             <SmallBanner
               title="15K Sold Out"
-              path={require("../assets/springReleaseBanner.jpeg")}
+              path={require("../assets/splash.png")}
             />
           </View>
           <View style={styles.bannerArea}>
             <SmallBanner
               title="Johns Jimmys!"
-              path={require("../assets/bannerIcon2.jpg")}
+              path={require("../assets/splash.png")}
             />
           </View>
           <View style={[styles.bannerArea, { marginRight: 20 }]}>
             <SmallBanner
               title="Shashanks Sambar!"
-              path={require("../assets/bannerIcon2.jpg")}
+              path={require("../assets/splash.png")}
             />
           </View>
         </ScrollView>

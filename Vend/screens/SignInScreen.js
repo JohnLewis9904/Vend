@@ -24,6 +24,7 @@ import colors from "../styles/colors";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
 import { auth, provider } from "../firebase";
 import { TextInput } from "react-native-paper";
+import UserInputBox from "../components/UserInputBox";
 
 export default function SignInScreen({navigation}) {
   //const [isChecked, setChecked] = useState(false);
@@ -36,7 +37,7 @@ export default function SignInScreen({navigation}) {
     // Signed in 
     const user = userCredential.user;
     // ...
-    navigation.navigate("fake")
+    navigation.navigate("HomeScreen")
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -51,6 +52,7 @@ export default function SignInScreen({navigation}) {
       .then((userCredentials) => {
         const user = userCredentials.user;
         console.log('Registered with:', user.email);
+        navigation.navigate("HomeScreen")
       })
       .catch((error) => alert(error.message));
   };
@@ -113,13 +115,16 @@ export default function SignInScreen({navigation}) {
         <Text style={[styles.title, { marginBottom: "5%" }]}>
           Welcome back!
         </Text>
-        <TextInput fn="Username" onChangeText={text => setEmail(text)}
-        value={this.email}
+        <UserInputBox
+          input={text => setEmail(text)}
+          fn={"Email"}
+          nums={38}
         />
-        <TextInput
-          fn="Password"
-          onChangeText={text => setPassword(text)}
-          value={password}
+        <UserInputBox
+          input={text => setPassword(text)}
+          fn={"Password"}
+          secureTextEntry={true}
+          nums={65}
         />
         <SignInButton
           title={"Login"}
@@ -218,4 +223,19 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
   },
+  input: {
+    marginHorizontal: '8%',
+    marginVertical: '3%',
+    padding: 10,
+    width: '84%',
+    height: 30,
+
+    backgroundColor: 'white',
+    color: colors.lightestgray,
+    borderRadius: 10,
+    borderTopStartRadius: 10,
+    borderTopRightRadius: 10,
+    borderColor: colors.lightAccentGrey,
+    borderWidth: 2,
+  }
 });
