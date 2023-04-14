@@ -13,10 +13,17 @@ import LargeBanner from "../components/LargeBanner";
 import SmallBanner from "../components/SmallBanner";
 import UpdateBanner from "../components/UpdateBanner";
 
+// Firebase imports
+import { auth, database } from "../firebase";
+import { collection, addDoc } from "@firebase/firestore";
+
 // You can import from local files
 import colors from "../styles/colors";
 
 function HomeScreen() {
+  const { user } = useAuthentication();
+  const [selected, setSelected] = React.useState('');
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
