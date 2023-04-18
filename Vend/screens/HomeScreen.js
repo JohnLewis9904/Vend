@@ -14,18 +14,35 @@ import SmallBanner from "../components/SmallBanner";
 import UpdateBanner from "../components/UpdateBanner";
 
 // Firebase imports
-import { auth, database } from "../firebase";
-import { collection, addDoc } from "@firebase/firestore";
+import { auth, database, col } from "../firebase";
+import { collection, addDoc, getDocs } from "@firebase/firestore";
 
 // You can import from local files
 import colors from "../styles/colors";
+import { Button } from "react-native-paper";
 
 function HomeScreen() {
-  const { user } = useAuthentication();
   const [selected, setSelected] = React.useState('');
   
   return (
     <SafeAreaView style={styles.container}>
+      <Button
+      style={styles.button}
+            onPress={() =>
+              getDocs(col)
+                .then((snapshot) => {
+                  let items = []
+                  snapshot.docs.forEach((doc) => {
+                  items.push({...doc.data(), id: doc.id})
+        })
+        console.log(items)
+    })
+    .catch(error =>{
+        console.log(erorr.message)
+    })
+          .then(console.log("item has been added"))
+        }
+          />
       <View style={styles.header}>
         <View style={styles.namePlate}>
           <Text style={styles.normalText}>Welcome back!</Text>
@@ -107,6 +124,7 @@ function HomeScreen() {
               btnName="Learn More"
             />
           </View>
+          
       </View>
     </SafeAreaView>
   );
@@ -141,6 +159,17 @@ const styles = StyleSheet.create({
     width: 50,
     backgroundColor: "white",
     borderRadius: 25,
+  },
+  button: {
+    height: 35,
+    marginVertical: "10%",
+
+    marginHorizontal: "8%",
+    width: "84%",
+    backgroundColor: colors.electric,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 8,
   },
 });
 export default HomeScreen;
