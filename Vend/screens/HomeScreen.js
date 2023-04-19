@@ -20,9 +20,29 @@ import { collection, addDoc, getDocs } from "@firebase/firestore";
 // You can import from local files
 import colors from "../styles/colors";
 import { Button } from "react-native-paper";
+import { QuerySnapshot } from "firebase/firestore";
 
 function HomeScreen() {
   const [selected, setSelected] = React.useState('');
+
+const [items, setItems] = useState([]);
+React.useEffect(async () => {
+  col
+  .onSnapshot(
+    querySnapshot => {
+      const items = []
+      querySnapshot.forEach((doc) => {
+        const { imageId, name } = doc.data()
+        items.push({
+          id: doc.id,
+          imageId,
+          name,
+        })
+      })
+      setItems(items)
+    }
+  )
+}, [])
   
   return (
     <SafeAreaView style={styles.container}>

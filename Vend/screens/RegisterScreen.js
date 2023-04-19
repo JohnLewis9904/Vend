@@ -79,14 +79,13 @@ export default function SignInScreen({navigation}) {
     <SafeAreaView style={styles.container}>
       <View>
         <View style={styles.header}>
-          <Text style={[styles.options, { color: colors.electric }]}>
-            Login
-          </Text>
-          <Pressable
-            onPress={navigation.navigate('RegisterScreen')}
-          >
-            <Text style={styles.options}>Register</Text>
-          </Pressable>
+            <Pressable
+            onPress={navigation.navigate('LogInScreen')}>
+                <Text style={styles.options}>
+                    Login
+                </Text>
+            </Pressable>
+        <Text style={[styles.options, { color: colors.electric }]}>Register</Text>
           
         </View>
         <View style={styles.barArea}>
