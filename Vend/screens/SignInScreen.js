@@ -32,23 +32,17 @@ export default function SignInScreen({navigation}) {
   const [password, setPassword] = useState('');
 
   const handleLogIn = () => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    navigation.navigate("HomeScreen")
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    
-  });
+     signInWithEmailAndPassword(auth, email, password)
+        .then((userCredentials) => {
+          const user = userCredentials.user;
+          console.log('Logged in with:', user.email);
+          navigation.navigate('HomeScreen');
+        })
+        .catch((error) => alert(error.message));
   }
 
   const handleSignUp = () => {
-    auth
-      .createUserWithEmailAndPassword(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
         const user = userCredentials.user;
         console.log('Registered with:', user.email);
