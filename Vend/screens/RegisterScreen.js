@@ -31,16 +31,6 @@ export default function SignInScreen({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogIn = () => {
-     signInWithEmailAndPassword(auth, email, password)
-        .then((userCredentials) => {
-          const user = userCredentials.user;
-          console.log('Logged in with:', user.email);
-          navigation.navigate('HomeScreen');
-        })
-        .catch((error) => alert(error.message));
-  }
-
   const handleSignUp = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
@@ -51,36 +41,12 @@ export default function SignInScreen({navigation}) {
       .catch((error) => alert(error.message));
   };
 
-  // const signInWithGoogle = () => {
-  //   signInWithPopup(auth, provider)
-  // .then((result) => {
-  //   // This gives you a Google Access Token. You can use it to access the Google API.
-  //   // const credential = GoogleAuthProvider.credentialFromResult(result);
-  //   // const token = credential.accessToken;
-  //   // The signed-in user info.
-  //   const user = result.user;
-  //   console.log("Login success")
-  //   navigation.navigate("fake")
-  //   // IdP data available using getAdditionalUserInfo(result)
-  //   // name = user.displayName, email = user.email etc
-  // }).catch((error) => {
-  //   // Handle Errors here.
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-  //   // The email of the user's account used.
-  //   const email = error.customData.email;
-  //   // The AuthCredential type that was used.
-  //   const credential = GoogleAuthProvider.credentialFromError(error);
-  //   console.log("Issue with login")
-  //   // ...
-  // });
-  // }
   return (
     <SafeAreaView style={styles.container}>
       <View>
         <View style={styles.header}>
             <Pressable
-            onPress={navigation.navigate('LogInScreen')}>
+            onPress={() => navigation.navigate("SignInScreen")}>
                 <Text style={styles.options}>
                     Login
                 </Text>
@@ -93,7 +59,7 @@ export default function SignInScreen({navigation}) {
             style={[
               styles.bar,
               { marginLeft: "8%" },
-              { backgroundColor: colors.electric },
+              
               { borderTopRightRadius: 0 },
               { borderBottomRightRadius: 0 },
             ]}
@@ -102,16 +68,17 @@ export default function SignInScreen({navigation}) {
             style={[
               styles.bar,
               { marginRight: "8%" },
+              { backgroundColor: colors.electric },
               { borderTopLeftRadius: 0 },
               { borderBottomLeftRadius: 0 },
             ]}
           ></View>
         </View>
         <Text style={[styles.title, { fontSize: 24 }, { fontWeight: "heavy" }]}>
-          Sign In
+          Register
         </Text>
         <Text style={[styles.title, { marginBottom: "5%" }]}>
-          Welcome back!
+          Enter your email and create a password
         </Text>
         <UserInputBox
           input={text => setEmail(text)}
@@ -125,10 +92,6 @@ export default function SignInScreen({navigation}) {
           nums={65}
         />
         <SignInButton
-          title={"Login"}
-          onPress={handleLogIn}
-        />
-        <SignInButton
           title={"Sign Up"}
           onPress={handleSignUp}
         />
@@ -138,27 +101,8 @@ export default function SignInScreen({navigation}) {
             value={isChecked}
             onValueChange={setChecked}
             />  */}
-          <Text
-            style={[
-              { color: colors.slate },
-              { marginLeft: "2%" },
-              { marginTop: 1 },
-              { fontSize: 16 },
-            ]}
-          >
-            Remember me
-          </Text>
         </View>
         <Text>{this.email}</Text>
-        <Image
-          source={require("../assets/border.png")}
-          style={{
-            width: "82%",
-            height: 20,
-            marginHorizontal: "8%",
-            marginTop: "9%",
-          }}
-        />
         <View style={styles.pagination}>
         <Pressable
           onClick={() => { console.log('Google button clicked') }}

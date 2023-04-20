@@ -41,40 +41,6 @@ export default function SignInScreen({navigation}) {
         .catch((error) => alert(error.message));
   }
 
-  const handleSignUp = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log('Registered with:', user.email);
-        navigation.navigate("HomeScreen")
-      })
-      .catch((error) => alert(error.message));
-  };
-
-  // const signInWithGoogle = () => {
-  //   signInWithPopup(auth, provider)
-  // .then((result) => {
-  //   // This gives you a Google Access Token. You can use it to access the Google API.
-  //   // const credential = GoogleAuthProvider.credentialFromResult(result);
-  //   // const token = credential.accessToken;
-  //   // The signed-in user info.
-  //   const user = result.user;
-  //   console.log("Login success")
-  //   navigation.navigate("fake")
-  //   // IdP data available using getAdditionalUserInfo(result)
-  //   // name = user.displayName, email = user.email etc
-  // }).catch((error) => {
-  //   // Handle Errors here.
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-  //   // The email of the user's account used.
-  //   const email = error.customData.email;
-  //   // The AuthCredential type that was used.
-  //   const credential = GoogleAuthProvider.credentialFromError(error);
-  //   console.log("Issue with login")
-  //   // ...
-  // });
-  // }
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -83,7 +49,7 @@ export default function SignInScreen({navigation}) {
             Login
           </Text>
           <Pressable
-            onPress={navigation.navigate('RegisterScreen')}
+            onPress={() => navigation.navigate('RegisterScreen')}
           >
             <Text style={styles.options}>Register</Text>
           </Pressable>
@@ -129,26 +95,12 @@ export default function SignInScreen({navigation}) {
           title={"Login"}
           onPress={handleLogIn}
         />
-        <SignInButton
-          title={"Sign Up"}
-          onPress={handleSignUp}
-        />
         <View style={styles.barArea}>
           {/* <Checkbox
               color={isChecked ? colors.electric : undefined}
             value={isChecked}
             onValueChange={setChecked}
             />  */}
-          <Text
-            style={[
-              { color: colors.slate },
-              { marginLeft: "2%" },
-              { marginTop: 1 },
-              { fontSize: 16 },
-            ]}
-          >
-            Remember me
-          </Text>
         </View>
         <Text>{this.email}</Text>
         <Image
