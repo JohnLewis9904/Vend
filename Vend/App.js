@@ -8,6 +8,7 @@ import SignInScreen from './screens/SignInScreen';
 import ShopScreen from './screens/ShopScreen';
 import ProfileScreen from './screens/ProfileScreen.js';
 import RegisterScren from './screens/RegisterScreen';
+import ImageScreenTemp from './screens/imageupload';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,11 +16,13 @@ export default function App() {
  return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen options={{ headerShown: false}} name="RegisterScreen" component={RegisterScren}
+        <Stack.Screen options={{ headerShown: false}} name="ImageScreenTemp" component={ImageScreenTemp}
         />
         <Stack.Screen options={{ headerShown: false}} name="SplashScreen" component={SplashScreen}
         />
         <Stack.Screen options={{ headerShown: false}} name="SignInScreen" component={SignInScreen}
+        />
+        <Stack.Screen options={{ headerShown: false}} name="RegisterScreen" component={RegisterScren}
         />
         <Stack.Screen options={{ headerShown: false}} name="HomeScreen" component={HomeScreen}
         />
