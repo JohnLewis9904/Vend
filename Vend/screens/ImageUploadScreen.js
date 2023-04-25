@@ -1,15 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Alert, SafeAreaView, Image } from 'react-native';
 
 import { useState } from "react";
-import { storage } from "../firebase";
-import { ref, uploadBytes } from'firebase/storage';
-import { v4 } from "uuid";
+
 import * as ImagePicker from 'expo-image-picker';
+import { firebase } from '../firebase';
 
-export default function App() {
-
-  const Uploadscreen = () => {
+ const UploadScreen = () => {
     const [image, setImage] = useState(null);
     const [uploading, setUploading] = useState(false);
 
@@ -43,24 +40,56 @@ export default function App() {
         'PHoto uploaded..!'
       );
       setImage(null);
-      }
-    }
+      };
+    
 
   return (
-    <SafeAreaView style={styles.container}>
-      <TouchableOpacity style={styles.selectButton} onPress={pickImage}>
+    <SafeAreaView>
+      <View style={styles.blobby}></View>
+      <TouchableOpacity style={styles.selectButton} onPress={() => pickImage}>
         <Text style={styles.buttonText}>Pick an Image</Text>
       </TouchableOpacity>
+      <View style={styles.imageConatiner}>
+        <Image source={{uri: image.uri}} style={{width: 300, height: 300}}/>
+        <TouchableOpacity style={styles.uploadButton} onPress={() => uploadImage}>
+          <Text style={styles.buttonText}>
+            Upload Image
+          </Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
-}
-}
+ }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'green',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  selectButton: {
+    borderRadius: 5,
+    width: 150, 
+    height: 150,
+    backgroundColor:'black',
+    alignItems:'center',
+    justifyContent:'center',
+  },
+  buttonText: {
+    color:'white',
+    fontSize:18,
+    fontWeight:'bold',
+  },
+  imageConatiner: {
+    marginTop: 30,
+    marginBottom: 50,
+    alignItems: 'center',
+  },
+  blobby: {
+    backgroundColor: 'purple',
+    flex: 1,
+  }
 });
+export default UploadScreen;
