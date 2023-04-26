@@ -26,7 +26,7 @@ import { auth, provider } from "../firebase";
 import { TextInput } from "react-native-paper";
 import UserInputBox from "../components/UserInputBox";
 
-export default function RegisterScreen({navigation}) {
+export default function SignInScreen({navigation}) {
   //const [isChecked, setChecked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

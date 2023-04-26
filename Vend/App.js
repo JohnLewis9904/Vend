@@ -8,7 +8,7 @@ import SignInScreen from './screens/SignInScreen';
 import ShopScreen from './screens/ShopScreen';
 import ProfileScreen from './screens/ProfileScreen.js';
 import RegisterScren from './screens/RegisterScreen';
-import ImageUploadScreen from './screens/ImageUploadScreen';
+import ImageScreenTemp from './screens/imageupload';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +16,7 @@ export default function App() {
  return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen options={{ headerShown: true}} name="ImageUploadScreen" component={ImageUploadScreen}
+        <Stack.Screen options={{ headerShown: false}} name="ImageScreenTemp" component={ImageScreenTemp}
         />
         <Stack.Screen options={{ headerShown: false}} name="SplashScreen" component={SplashScreen}
         />
