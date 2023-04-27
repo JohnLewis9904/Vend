@@ -16,8 +16,6 @@ export default function App() {
  return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen options={{ headerShown: false}} name="ImageScreenTemp" component={ImageScreenTemp}
-        />
         <Stack.Screen options={{ headerShown: false}} name="SplashScreen" component={SplashScreen}
         />
         <Stack.Screen options={{ headerShown: false}} name="SignInScreen" component={SignInScreen}
@@ -30,7 +28,8 @@ export default function App() {
         />
         <Stack.Screen options={{ headerShown: false}} name="ProfileScreen" component={ProfileScreen}
         />
-      
+        <Stack.Screen options={{ headerShown: false}} name="ImageScreenTemp" component={ImageScreenTemp}
+        />
       </Stack.Navigator>
     </NavigationContainer>
  );

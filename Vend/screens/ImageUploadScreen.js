@@ -11,11 +11,12 @@ import { firebase } from '../firebase';
     const [uploading, setUploading] = useState(false);
 
     const pickImage = async () => {
-      let result = await ImagePicker.laungImageLibraryAsync({
+      // No permissions request is necessary for launching the image library
+      let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
-        allowEditing:true,
-        aspect: [4,3],
-        quality:1,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
       });
 
       const source = {uri: result.uri};
@@ -37,7 +38,7 @@ import { firebase } from '../firebase';
       }
       setUploading(false);
       Alert.Alert(
-        'PHoto uploaded..!'
+        'Photo uploaded..!'
       );
       setImage(null);
       };
