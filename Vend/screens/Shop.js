@@ -10,21 +10,39 @@ import {
 } from "react-native";
 import { useState } from "react";
 
-import Searchbar from "../components/Searchbar";
-
+import Item from "../components/Item";
+import SearchBar from "../components/Searchbar"
 // You can import from local files
 import colors from "../styles/colors";
-import SearchBar from "../components/Searchbar";
 
 function Shop() {
+  const [username, setUsername] = useState('');
+
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.header}>
         <View style={styles.searchBar}>
-            <SearchBar/>
+        <SearchBar fn="Username" input={setUsername} />
         </View>
         <View style={styles.cartIcon}></View>
 
+        </View>
+        <View style={styles.itemList}>
+          <Item
+            header="Cotton T Shirt"
+            body="$32"
+            path={require("../assets/springReleaseBanner.jpeg")}
+          />
+           <Item
+            header="Nike Tech"
+            body="$65"
+            path={require("../assets/monkeyBanner.jpg")}
+          />
+           <Item
+            header="Adidas Puffer"
+            body="$20"
+            path={require("../assets/border.png")}
+          />
         </View>
     </SafeAreaView>
   );
