@@ -53,7 +53,7 @@ import { firebase } from '../firebase';
             {image && <Image source={{uri: image.uri}} style={{width: 300, height: 300}}/>}
             <TouchableOpacity style={styles.uploadButton} onPress={() => uploadImage}>
               <Text style={styles.buttonText}>
-                Upload Image
+                Submit
               </Text>
             </TouchableOpacity>
           </View>
