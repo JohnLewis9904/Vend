@@ -8,9 +8,14 @@ import { firebase } from '../firebase';
 
  const UploadScreen = () => {
     const [image, setImage] = useState(null);
+    const [itemName, setItemName] = useState(null);
+    const [itemPrice, setItemPrice] = useState(null);
+    const [itemSize, setItemSize] = useState(null);
+
     const [uploading, setUploading] = useState(false);
 
     const pickImage = async () => {
+      console.log("pressed blue");
       // No permissions request is necessary for launching the image library
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -25,11 +30,21 @@ import { firebase } from '../firebase';
     };
 
     const uploadImage = async () => {
+      console.log('pressed red');
       setUploading(true);
       const response = await fetch(image.uri)
       const blob = await response.blob();
       const filename = image.uri.substring(image.uri.lastIndexOf('/')+1);
       var ref = firebase.storage().ref().child(filename).put(blob);
+
+      console.log(ref);
+
+      addDoc(col, {
+        Name: {itemName},
+        Price: {itemPrice}, 
+        Size: {itemSize},
+        Filename: {ref},
+    })
       
       try {
         await ref;
@@ -41,17 +56,20 @@ import { firebase } from '../firebase';
         'Photo uploaded..!'
       );
       setImage(null);
+      setItemName(null);
+      setItemPrice(null);
+      setItemSize(null);
       };
     
 
       return (
         <SafeAreaView style={styles.container}>
-          <TouchableOpacity style={styles.selectButton} onPress={() => pickImage}>
+          <TouchableOpacity style={styles.selectButton} onPress={() => pickImage()}>
             <Text style={styles.buttonText}>Pick an Image</Text>
           </TouchableOpacity>
           <View style={styles.imageConatiner}>
             {image && <Image source={{uri: image.uri}} style={{width: 300, height: 300}}/>}
-            <TouchableOpacity style={styles.uploadButton} onPress={() => uploadImage}>
+            <TouchableOpacity style={styles.uploadButton} onPress={() => uploadImage()}>
               <Text style={styles.buttonText}>
                 Submit
               </Text>

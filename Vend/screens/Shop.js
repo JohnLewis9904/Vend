@@ -33,12 +33,13 @@ React.useEffect(async () => {
     querySnapshot => {
       const items = []
       querySnapshot.forEach((doc) => {
-        const { Name, Price, Filename } = doc.data()
+        const { Name, Price, Filename, Size } = doc.data()
         items.push({
           id: doc.id,
           Filename,
           Name,
           Price,
+          Size,
         })
       })
       setItems(items)
@@ -75,13 +76,14 @@ React.useEffect(async () => {
 
         </View>
         <View style={styles.itemList}>
-          <FlatList style={{height:'100%'}}
+          <FlatList
           data={items}
-          renderItem={({item}) => (
+          renderItem={({obj}) => (
             <Item
-              header={item.Name}
-              body={item.Price}
-              path={item.Filename}
+              header={obj.Name}
+              body={obj.Price}
+              path={obj.Filename}
+              //NEED TO ADD SIZE COMPONENT TO ITEMS
             />
           )}
           />

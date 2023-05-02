@@ -7,10 +7,10 @@ function Item({header, body, path}) {
   return (
     <View>
       <View style={styles.viewContainer}>
-        <Image
+        {/* <Image
         style={styles.viewImage}
           source={path}
-        />
+        /> */}
         <Text style={styles.viewHeader}>{header}</Text>
         <Text style={styles.viewBody}>{body}</Text>
         
