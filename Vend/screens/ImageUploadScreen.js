@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Alert, SafeAreaView, Image } 
 import { useState } from "react";
 
 import * as ImagePicker from 'expo-image-picker';
-import { firebase } from '../firebase';
+import { firebase, storage } from '../firebase';
 
  const UploadScreen = () => {
     const [image, setImage] = useState(null);
@@ -15,7 +15,6 @@ import { firebase } from '../firebase';
     const [uploading, setUploading] = useState(false);
 
     const pickImage = async () => {
-      console.log("pressed blue");
       // No permissions request is necessary for launching the image library
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -30,35 +29,46 @@ import { firebase } from '../firebase';
     };
 
     const uploadImage = async () => {
-      console.log('pressed red');
+      if( image == null ) {
+        return null;
+      }
       setUploading(true);
       const response = await fetch(image.uri)
       const blob = await response.blob();
+
       const filename = image.uri.substring(image.uri.lastIndexOf('/')+1);
-      var ref = firebase.storage().ref().child(filename).put(blob);
+      //var ref = await storage().ref().child(filename).put(blob);
+      const storageRef = storage.ref(`photos/${filename}`);
+      const task = storageRef.putFile(image);
 
-      console.log(ref);
+      console.log(filename);
+      console.log(storageRef);
+      console.log(task);
 
-      addDoc(col, {
-        Name: {itemName},
-        Price: {itemPrice}, 
-        Size: {itemSize},
-        Filename: {ref},
-    })
+    //   addDoc(col, {
+    //     // Name: {itemName},
+    //     // Price: {itemPrice}, 
+    //     // Size: {itemSize},
+    //     Name: 'shirt',
+    //     Price: '5', 
+    //     Size: 'm',
+    //     Filename: {ref},
+    // })
       
       try {
-        await ref;
+        await task;
+        setUploading(false);
+        Alert.Alert(
+          'Photo uploaded..!'
+        );
+        setImage(null);
+        setItemName(null);
+        setItemPrice(null);
+        setItemSize(null);
+        
       }catch (e) {
         console.log(e)
       }
-      setUploading(false);
-      Alert.Alert(
-        'Photo uploaded..!'
-      );
-      setImage(null);
-      setItemName(null);
-      setItemPrice(null);
-      setItemSize(null);
       };
     
 
