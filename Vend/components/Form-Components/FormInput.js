@@ -14,24 +14,23 @@ function FormInput({ fn, keyboard, secureTextEntry, input, nums }) {
         secureTextEntry={secureTextEntry}
         clearButtonMode="always" // only works in iOS, the x appears when you start to type
         maxLength={nums}
-      />
+    />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'left',
+    alignItems: 'flex-start',
   },
   input: {
 
-    margin: 10,
     padding: 10,
-    backgroundColor: colors.lightGrey,
-    backgroundOpacity: 0.5,
-    color: colors.slate,
-    width: Constants.statusBarWidth,
+    backgroundColor: colors.lightestgray,
+    color: colors.lightGrey,
+    width: '100%',
     borderRadius: 8,
+    marginVertical: 10,
   },
 });
 export default FormInput;

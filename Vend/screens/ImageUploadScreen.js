@@ -2,13 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Alert, SafeAreaView, Image } from 'react-native';
 
 import { useState } from "react";
-
+import FormInput from '../components/Form-Components/FormInput';
 import * as ImagePicker from 'expo-image-picker';
 import { firebase, storage } from '../firebase';
+import colors from '../styles/colors';
 
  const UploadScreen = () => {
     const [image, setImage] = useState(null);
-    const [itemName, setItemName] = useState(null);
+    const [itemName, setItemName] = useState('');
     const [itemPrice, setItemPrice] = useState(null);
     const [itemSize, setItemSize] = useState(null);
 
@@ -74,14 +75,23 @@ import { firebase, storage } from '../firebase';
 
       return (
         <SafeAreaView style={styles.container}>
-          <TouchableOpacity style={styles.selectButton} onPress={() => pickImage()}>
-            <Text style={styles.buttonText}>Pick an Image</Text>
+          <Text style={[styles.text, { fontWeight: '600' }]}>
+            Item Application:
+          </Text>
+          <FormInput
+            fn="Name"
+          />
+          <FormInput
+            fn="Price"
+          />
+          <TouchableOpacity style={styles.uploadButton} onPress={() => pickImage()}>
+            <Text style={styles.buttonText}>Choose Image</Text>
           </TouchableOpacity>
           <View style={styles.imageConatiner}>
             {image && <Image source={{uri: image.uri}} style={{width: 300, height: 300}}/>}
-            <TouchableOpacity style={styles.uploadButton} onPress={() => uploadImage()}>
+            <TouchableOpacity style={styles.selectButton} onPress={() => uploadImage()}>
               <Text style={styles.buttonText}>
-                Submit
+                Upload Item
               </Text>
             </TouchableOpacity>
           </View>
@@ -93,35 +103,41 @@ import { firebase, storage } from '../firebase';
     const styles = StyleSheet.create({
       container: {
         flex: 1,
-        backgroundColor: 'white',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: colors.lightGrey,
+        marginTop: '20%',
+        paddingHorizontal: '10%',
       },
       selectButton: {
-        borderRadius: 5,
-        width: 150, 
-        height: 100,
-        backgroundColor:'blue',
-        alignItems:'center',
-        justifyContent:'center',
+        height: 35,
+        width: '100%',
+        marginVertical: '5%',
+        backgroundColor: colors.electric,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 8,
+      },
+      text: {
+        marginVertical: 20,
+        fontSize: 20,
+        color: colors.electric,
       },
       buttonText: {
-        color:'white',
-        fontSize:18,
-        fontWeight:'bold',
+        fontWeight: 600,
+        color: colors.lightGrey,
       },
       imageConatiner: {
-        marginTop: 30,
-        marginBottom: 50,
         alignItems: 'center',
+        marginVertical: '5%',
+
       },
       uploadButton: {
-        borderRadius: 5,
-        width: 150, 
-        height: 100,
-        backgroundColor:'red',
-        alignItems:'center',
-        justifyContent:'center',
+        height: 35,
+        width: '100%',
+        marginVertical: '5%',
+        backgroundColor: colors.lightAccentGrey,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 8,
       }
 });
 export default UploadScreen;
