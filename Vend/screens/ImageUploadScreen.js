@@ -75,7 +75,7 @@ import colors from '../styles/colors';
 
       return (
         <SafeAreaView style={styles.container}>
-          <Text style={[styles.text, { fontWeight: '600' }]}>
+          <Text style={styles.text}>
             Item Application:
           </Text>
           <FormInput
@@ -104,7 +104,7 @@ import colors from '../styles/colors';
       container: {
         flex: 1,
         backgroundColor: colors.lightGrey,
-        marginTop: '20%',
+        justifyContent: 'center',
         paddingHorizontal: '10%',
       },
       selectButton: {
@@ -119,7 +119,8 @@ import colors from '../styles/colors';
       text: {
         marginVertical: 20,
         fontSize: 20,
-        color: colors.electric,
+        fontWeight: 'bold',
+        color: colors.slate,
       },
       buttonText: {
         fontWeight: 600,
