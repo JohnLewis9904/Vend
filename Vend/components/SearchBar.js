@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     margin: 20,
     marginVertical: 20,
-    width: Constants.statusBarWidth,
   },
   searchIcon: {
     backgroundColor: 'white',

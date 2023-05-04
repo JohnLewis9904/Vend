@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, Image } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
 
-function CategoryIcon({ name, color, icpapaththnn }) {
+function CategoryIcon({ name, color, path}) {
   return (
-    <View style={styles.container}>
-      <View style={styles.box}>
-        <View style={styles.icon}>
-          <Image
-            style={{
-              resizeMode: 'contain',
-              height: 40,
-              width: 50,
-            }}
-            source={require('@expo/snack-static/react-native-logo.png')}
-          />
-        </View>
-        <View style={styles.name}>
-          <Text style={styles.text}>{name}</Text>
+    <TouchableOpacity>
+      <View style={styles.container}>
+        <View style={styles.box}>
+          <View style={styles.icon}>
+            <Image
+              style={{
+                resizeMode: 'contain',
+                height: 40,
+                width: 50,
+              }}
+              source={path}
+            />
+          </View>
+          <View style={styles.name}>
+            <Text style={styles.text}>{name}</Text>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

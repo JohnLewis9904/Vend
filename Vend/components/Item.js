@@ -1,16 +1,16 @@
 import React from 'react';
 import { View, Image,Text, StyleSheet } from 'react-native';
-import colors from '../styles/colors';
+import colors from './../styles/colors';
 import Constants from 'expo-constants';
 
 function Item({header, body, path}) {
   return (
     <View>
       <View style={styles.viewContainer}>
-        {/* <Image
+        <Image
         style={styles.viewImage}
           source={path}
-        /> */}
+        />
         <Text style={styles.viewHeader}>{header}</Text>
         <Text style={styles.viewBody}>{body}</Text>
         
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     height: 190,
     width: 150,
     borderRadius: 10,
-    backgroundColor: "black",
+    backgroundColor: colors.lightestgray,
     padding: 10,
     margin:9,
   },
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     height: 100,
     width: 130,
     borderRadius: 5,
-    backgroundColor: colors.banana
+    backgroundColor: colors.lightAccentGrey
   },
   viewHeader: {
     fontSize: 14,
@@ -49,3 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 export default Item;
+//<Image source={require({imageRoute})} />
