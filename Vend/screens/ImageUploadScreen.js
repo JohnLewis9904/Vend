@@ -4,8 +4,9 @@ import { StyleSheet, Text, View, TouchableOpacity, Alert, SafeAreaView, Image } 
 import { useState } from "react";
 import FormInput from '../components/Form-Components/FormInput';
 import * as ImagePicker from 'expo-image-picker';
-import { firebase, storage } from '../firebase';
+import { storage } from '../firebase';
 import colors from '../styles/colors';
+import { ref, uploadBytes } from 'firebase/storage';
 
  const UploadScreen = () => {
     const [image, setImage] = useState(null);
@@ -14,6 +15,8 @@ import colors from '../styles/colors';
     const [itemSize, setItemSize] = useState(null);
 
     const [uploading, setUploading] = useState(false);
+
+    const storageRef = ref(storage, "images");
 
     const pickImage = async () => {
       // No permissions request is necessary for launching the image library
@@ -29,48 +32,85 @@ import colors from '../styles/colors';
       setImage(source)
     };
 
-    const uploadImage = async () => {
-      if( image == null ) {
-        return null;
-      }
-      setUploading(true);
-      const response = await fetch(image.uri)
-      const blob = await response.blob();
+    // const uploadImage = async () => {
+    //   if( image == null ) {
+    //     return null;
+    //   }
 
-      const filename = image.uri.substring(image.uri.lastIndexOf('/')+1);
-      //var ref = await storage().ref().child(filename).put(blob);
-      const storageRef = storage.ref(`photos/${filename}`);
-      const task = storageRef.putFile(image);
+    //   uploadBytes(storageRef, image)
+    //     .then((snapshot) => {
+    //       console.log('uploaded a file')
+    //     })
 
-      console.log(filename);
-      console.log(storageRef);
-      console.log(task);
+    //   const response = await fetch(image.uri)
+    //   // const blob = await response.blob();
 
-    //   addDoc(col, {
-    //     // Name: {itemName},
-    //     // Price: {itemPrice}, 
-    //     // Size: {itemSize},
-    //     Name: 'shirt',
-    //     Price: '5', 
-    //     Size: 'm',
-    //     Filename: {ref},
-    // })
+    //   // const filename = image.uri.substring(image.uri.lastIndexOf('/')+1);
+    //   //var ref = await storage().ref().child(filename).put(blob);
+    //   // const storageRef = storage.ref(`photos/${filename}`);
+    //   // const task = storageRef.putFile(image);
+
+    //   await storage
+    //   .ref(image)
+    //   .putFile(response)
+
+    //   console.log(storage);
+    //   console.log(response);
+    
+
+    // //   addDoc(col, {
+    // //     // Name: {itemName},
+    // //     // Price: {itemPrice}, 
+    // //     // Size: {itemSize},
+    // //     Name: 'shirt',
+    // //     Price: '5', 
+    // //     Size: 'm',
+    // //     Filename: {ref},
+    // // })
       
+    //   try {
+    //     await task;
+    //     Alert.Alert(
+    //       'Photo uploaded..!'
+    //     );
+    //     setImage(null);
+    //     setItemName(null);
+    //     setItemPrice(null);
+    //     setItemSize(null);
+        
+    //   }catch (e) {
+    //     console.log(e)
+    //   }
+    //   };
+
+    const uploadImage = async () => {
+      const { uri } = image;
+    
+      const filename = uri.substring(uri.lastIndexOf('/') + 1);
+    
+     const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
+    
+      setUploading(true);
+     
+      const task = storageRef
+        .ref(filename)
+        .putFile(uploadUri);
+
       try {
         await task;
-        setUploading(false);
-        Alert.Alert(
-          'Photo uploaded..!'
-        );
-        setImage(null);
-        setItemName(null);
-        setItemPrice(null);
-        setItemSize(null);
-        
-      }catch (e) {
-        console.log(e)
+      } catch (e) {
+        console.error(e);
       }
-      };
+    
+      setUploading(false);
+    
+      Alert.alert(
+        'Photo uploaded!',  
+        'Your photo has been uploaded to Firebase Cloud Storage!'
+      );
+     
+      setImage(null);
+    };
     
 
       return (
