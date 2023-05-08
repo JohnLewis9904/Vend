@@ -87,7 +87,7 @@ function Shop() {
         />
       </View>
       <View>
-        <View styles={styles.categoryRow}>
+        <View style={styles.categoryRow}>
           <CategoryIcon name="Pants" path={require("../assets/favicon.png")} />
           <CategoryIcon name="Shirts" path={require("../assets/favicon.png")} />
           <CategoryIcon
