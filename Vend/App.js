@@ -8,7 +8,7 @@ import SignInScreen from './screens/SignInScreen';
 import ShopScreen from './screens/Shop';
 import ProfileScreen from './screens/ProfileScreen.js';
 import RegisterScren from './screens/RegisterScreen';
-import ImageScreen from './screens/ImageUploadScreen';
+import ImageScreen from './screens/ItemUploadScreen';
 
 const Stack = createNativeStackNavigator();
 

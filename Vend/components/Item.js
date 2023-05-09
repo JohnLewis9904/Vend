@@ -9,7 +9,7 @@ function Item({header, body, path}) {
       <View style={styles.viewContainer}>
         <Image
         style={styles.viewImage}
-          source={path}
+          source={{uri: path}}
         />
         <Text style={styles.viewHeader}>{header}</Text>
         <Text style={styles.viewBody}>{body}</Text>
