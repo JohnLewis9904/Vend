@@ -12,7 +12,7 @@ import uplodImageFromDevice from "../components/uploadImageFromDevice";
 import getBlobFromUri from "../components/getBlobFromUri";
 import manageFileUpload from "../components/manageFileUpload";
 import FormInput from '../components/Form-Components/FormInput';
-export default function App() {
+export default function ItemUploadScreen() {
   const [imgURI, setImageURI] = React.useState(null);
 
   const [isUploading, setIsUploading] = React.useState(false);

@@ -28,7 +28,7 @@ export default function App() {
         />
         <Stack.Screen options={{ headerShown: false}} name="ProfileScreen" component={ProfileScreen}
         /> */}
-        <Stack.Screen options={{ headerShown: false}} name="ProfileScreen" component={ProfileScreen}
+        <Stack.Screen options={{ headerShown: false}} name="ImageScreen" component={ImageScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

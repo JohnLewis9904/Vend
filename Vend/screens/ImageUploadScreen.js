@@ -8,7 +8,7 @@ import { storage } from '../firebase';
 import colors from '../styles/colors';
 import { ref, uploadBytes } from 'firebase/storage';
 
- const UploadScreen = () => {
+ const ImageUploadScreen = () => {
     const [image, setImage] = useState(null);
     const [itemName, setItemName] = useState('');
     const [itemPrice, setItemPrice] = useState(null);
@@ -181,4 +181,4 @@ import { ref, uploadBytes } from 'firebase/storage';
         borderRadius: 8,
       }
 });
-export default UploadScreen;
+export default ImageUploadScreen;
