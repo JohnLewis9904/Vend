@@ -81,7 +81,6 @@ function Shop() {
               header={obj.Name}
               body={obj.Price}
               path={obj.Filename}
-              //NEED TO ADD SIZE COMPONENT TO ITEMS
             />
           )}
         />
@@ -102,7 +101,7 @@ function Shop() {
         <Item
           header="Soundtrack App"
           body="Rate soundtracks using a database"
-          // path={require("./app/assets/movie.jpg")}
+          path={require("./app/assets/movie.jpg")}
         />
       </View>
     </SafeAreaView>

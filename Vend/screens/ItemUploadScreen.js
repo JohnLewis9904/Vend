@@ -11,7 +11,7 @@
 // import uplodImageFromDevice from "../components/uploadImageFromDevice";
 // import getBlobFromUri from "../components/getBlobFromUri";
 // import manageFileUpload from "../components/manageFileUpload";
-// import FormInput from '../components/Form-Components/FormInput';
+ import FormInput from '../components/Form-Components/FormInput';
 // import colors from '../styles/colors'
 // export default function ItemUploadScreen() {
 //   const [imgURI, setImageURI] = React.useState(null);
@@ -188,9 +188,16 @@ import * as ImagePicker from 'expo-image-picker';
 
 import {firebase} from '../firebase';
 
+import { col } from "../firebase";
+import { addDoc } from "@firebase/firestore";
+
 export default function UploadScreen () {
 const [image, setImage] = useState(null);
 const [uploading, setUploading] = useState(false);
+
+
+const[itemName, setItemName] = useState(null);
+const[itemPrice, setItemPrice] = useState(null);
 
 const pickImage = async () => {
  // no permissions request is necessary for launching the image library
@@ -250,6 +257,13 @@ const uploadImage = async () => {
        console.log("Download URL: ", url)
        setImage(url)
        blob.close()
+
+       addDoc(col, {
+        Name: {itemName},
+        Price: {itemPrice},
+        Filename: {url},
+    })
+
        return url
      })
    }
@@ -259,7 +273,17 @@ const uploadImage = async () => {
 
 return (
 <SafeAreaView style={styles.container}>
-
+<Text style={styles.text}>
+            Item Application:
+          </Text>
+          <FormInput
+            fn="Name"
+            input = {(name) => setItemName(name)}
+          />
+          <FormInput
+            fn="Price"
+            input = {(price) => setItemPrice(price)}
+          />
  <TouchableOpacity style={styles.selectButton} onPress={pickImage}>
      <Text style={styles.buttonText}>Pick an image</Text>
  </TouchableOpacity>
@@ -318,6 +342,12 @@ image: {
  width:300, 
  height:225,
  marginBottom: 30,
-}
+},
+text: {
+  marginVertical: 20,
+  fontSize: 20,
+  fontWeight: 'bold',
+  color: colors.slate,
+},
 
 })
