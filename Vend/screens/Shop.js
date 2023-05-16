@@ -101,7 +101,6 @@ function Shop() {
         <Item
           header="Soundtrack App"
           body="Rate soundtracks using a database"
-          path={require("./app/assets/movie.jpg")}
         />
       </View>
     </SafeAreaView>

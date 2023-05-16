@@ -347,7 +347,7 @@ text: {
   marginVertical: 20,
   fontSize: 20,
   fontWeight: 'bold',
-  color: colors.slate,
+  color: 'gray',
 },
 
 })
