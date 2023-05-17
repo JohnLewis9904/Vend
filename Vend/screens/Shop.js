@@ -33,13 +33,12 @@ function Shop() {
     col.onSnapshot((querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
-        const { Name, Price, Filename, Size } = doc.data();
+        const { Name, Price, Filename } = doc.data();
         items.push({
           id: doc.id,
           Filename,
           Name,
           Price,
-          Size,
         });
       });
       setItems(items);
