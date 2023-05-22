@@ -9,7 +9,7 @@ function UserInputBox({ fn, keyboard, secureTextEntry, input, nums }) {
       <TextInput
         keyboardType={keyboard}
         onChangeText={input}
-        placeholder={fn}
+        label={fn}
         style={styles.input}
         secureTextEntry={secureTextEntry}
         clearButtonMode="always" // only works in iOS, the x appears when you start to type

@@ -21,7 +21,7 @@ function SplashScreen({navigation}) {
           </Pressable>
           <Pressable 
             style={styles.signUpButton}
-            onPress={() => navigation.navigate("SignInScreen")}
+            onPress={() => navigation.navigate("RegisterScreen")}
           >
             <Text style={styles.myTextTwo}>Sign Up</Text>
           </Pressable>
