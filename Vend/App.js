@@ -16,20 +16,20 @@ export default function App() {
  return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen options={{ headerShown: false}} name="SplashScreen" component={SplashScreen}
+        {/* <Stack.Screen options={{ headerShown: false}} name="SplashScreen" component={SplashScreen}
         />
         <Stack.Screen options={{ headerShown: false}} name="SignInScreen" component={SignInScreen}
         />
         <Stack.Screen options={{ headerShown: false}} name="RegisterScreen" component={RegisterScren}
-        />
+ />*/}
         <Stack.Screen options={{ headerShown: false}} name="HomeScreen" component={HomeScreen}
-        />
+        />{/*
         <Stack.Screen options={{ headerShown: false}} name="ProfileScreen" component={ProfileScreen}
-        />
-        <Stack.Screen options={{ headerShown: false}} name="ShopScreen" component={ShopScreen}
+        /> */}
+        {/* <Stack.Screen options={{ headerShown: false}} name="ShopScreen" component={ShopScreen}
         />
         <Stack.Screen options={{ headerShown: false}} name="ImageScreen" component={ImageScreen}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
  );
