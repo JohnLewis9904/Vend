@@ -491,26 +491,23 @@ const uploadImage = async () => {
     <SafeAreaView style={styles.container}>
       <View>
         <Image
-        style={styles.image}
+        style={styles.image1}
         source={require('../assets/kuldeep.jpg')}
         />
         
-
-
-      <View style={[{margin: 10}]}></View>
         
         <Text style={[styles.title, { fontSize: 18 }, { fontWeight: "bold" }]}>
           Flux Hoodie (Receipt)
         </Text>
         
   
-        <Text style={[styles.title,{ fontSize: 16 }, { fontWeight: "normal" }, {marginBottom: 20}]}>
+        <Text style={[styles.title,{ fontSize: 16 }, { fontWeight: "normal" }, {marginBottom: 5}]}>
             $45.00
         </Text>
-        <Text style={[styles.title,{ fontSize: 16 }, { fontWeight: "normal" }]}>
+        <Text style={[styles.title,{ fontSize: 14 }, { fontWeight: "normal" }]}>
             Vendor: Aashman Sharma
         </Text>
-        <Text style={[styles.title,{ fontSize: 16 }, { fontWeight: "normal" }, {marginBottom: 20}]}>
+        <Text style={[styles.title,{ fontSize: 14 }, { fontWeight: "normal" }, {marginBottom: 10}]}>
             Vendor #: 123-456-7890
         </Text>
         
@@ -523,7 +520,6 @@ const uploadImage = async () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: "10%",
     backgroundColor: 'white',
   },
   barArea: {
@@ -597,6 +593,5 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 20,
     marginHorizontal: '44%',
-
   },
 });
