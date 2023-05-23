@@ -28,7 +28,7 @@ function CategoryIcon({ name, color, path}) {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 15,
+    margin: 10,
   },
   box: {
     width: 70,

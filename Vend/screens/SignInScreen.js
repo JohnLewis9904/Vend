@@ -21,8 +21,8 @@ import { useState } from "react";
 import colors from "../styles/colors";
 
 // or any pure javascript modules available in npm
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
-import { auth, provider } from "../firebase";
+// import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
+// import { auth, provider } from "../firebase";
 import { TextInput } from "react-native-paper";
 import UserInputBox from "../components/UserInputBox";
 
@@ -30,16 +30,16 @@ export default function SignInScreen({navigation}) {
   //const [isChecked, setChecked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const handleLogIn = () => {
-     signInWithEmailAndPassword(auth, email, password)
-        .then((userCredentials) => {
-          const user = userCredentials.user;
-          console.log('Logged in with:', user.email);
-          navigation.navigate('HomeScreen');
-        })
-        .catch((error) => alert(error.message));
-  }
+    navigation.navigate("HomeScreen")
+    // createUserWithEmailAndPassword(auth, email, password)
+    //   .then((userCredentials) => {
+    //     const user = userCredentials.user;
+    //     console.log('Registered with:', user.email);
+        
+    //   })
+    //   .catch((error) => alert(error.message));
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -74,7 +74,7 @@ export default function SignInScreen({navigation}) {
             ]}
           ></View>
         </View>
-        <Text style={[styles.title, { fontSize: 24 }, { fontWeight: "heavy" }]}>
+        <Text style={[styles.title, { fontSize: 24 }, { fontWeight: "bold" }]}>
           Sign In
         </Text>
         <Text style={[styles.title, { marginBottom: "5%" }]}>
@@ -103,21 +103,12 @@ export default function SignInScreen({navigation}) {
             />  */}
         </View>
         <Text>{this.email}</Text>
-        <Image
-          source={require("../assets/border.png")}
-          style={{
-            width: "82%",
-            height: 20,
-            marginHorizontal: "8%",
-            marginTop: "9%",
-          }}
-        />
+        
         <View style={styles.pagination}>
         <Pressable
           onClick={() => { console.log('Google button clicked') }}
           style={styles.pagination}
         >
-          <Image source={'../assets/googlebutton.PNG'}/>
         </Pressable>
         </View>
       </View>
@@ -128,7 +119,6 @@ export default function SignInScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     paddingTop: "10%",
     backgroundColor: "#fbf9f9",
   },
@@ -148,6 +138,7 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
   header: {
+    marginTop: 40,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",

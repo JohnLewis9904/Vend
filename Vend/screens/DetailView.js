@@ -392,7 +392,7 @@ import colors from "../styles/colors";
 // import { TextInput } from "react-native-paper";
 import UserInputBox from "../components/UserInputBox";
 
-export default function ItemUploadScreen({ navigation }) {
+export default function DetailView({ navigation }) {
   //const [isChecked, setChec ked] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -490,59 +490,31 @@ const uploadImage = async () => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-        
-        <Text style={[styles.title, { fontSize: 24 }, { fontWeight: "bold" }, {marginBottom: 20}]}>
-          Contact
-        </Text>
-        
-        <FormInput input={(text) => setEmail(text)} fn={"Name"} nums={38} />
-        <FormInput
-          input={(text) => setPassword(text)}
-          fn={"Phone"}
-          secureTextEntry={true}
-          nums={65}
-          right = {
-              <TextInput.Icon
-              name="eye"
-              onPress={() => {
-                setSecureTextEntry(!secureTextEntry);
-                return false;
-              }}
-              color={colors.electric}
-            />
-            }
-          
+        <Image
+        style={styles.image}
+        source={require('../assets/kuldeep.jpg')}
         />
+        
 
 
-        <View style={[{margin: 10}]}></View>
+      <View style={[{margin: 10}]}></View>
         
-        <Text style={[styles.title, { fontSize: 24 }, { fontWeight: "bold" }, {marginBottom: 20}]}>
-          Upload Item
+        <Text style={[styles.title, { fontSize: 18 }, { fontWeight: "bold" }]}>
+          Flux Hoodie (Receipt)
         </Text>
         
-        <FormInput input={(text) => setEmail(text)} fn={"Item Name"} nums={38} />
-        <FormInput
-          input={(text) => setPassword(text)}
-          fn={"Item Price"}
-          secureTextEntry={true}
-          nums={65}
-          right = {
-              <TextInput.Icon
-              name="eye"
-              onPress={() => {
-                setSecureTextEntry(!secureTextEntry);
-                return false;
-              }}
-              color={colors.electric}
-            />
-            }
-          
-        />
-        <Image style={styles.logo} source={require('../assets/uploadicon.png')}></Image>
-        <View style={[{marginTop: 100}]}>
-        <SignInButton  title={"Upload"} onPress={handleSignUp} />
-        </View>
+  
+        <Text style={[styles.title,{ fontSize: 16 }, { fontWeight: "normal" }, {marginBottom: 20}]}>
+            $45.00
+        </Text>
+        <Text style={[styles.title,{ fontSize: 16 }, { fontWeight: "normal" }]}>
+            Vendor: Aashman Sharma
+        </Text>
+        <Text style={[styles.title,{ fontSize: 16 }, { fontWeight: "normal" }, {marginBottom: 20}]}>
+            Vendor #: 123-456-7890
+        </Text>
+        
+        <SignInButton  title={"Contact Vendor"} onPress={handleSignUp} />
         </View>
     </SafeAreaView>
   );

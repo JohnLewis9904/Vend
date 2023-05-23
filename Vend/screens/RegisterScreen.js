@@ -8,6 +8,9 @@ import {
   Alert,
   Pressable,
 } from "react-native";
+import { TextInput } from 'react-native-paper';
+import { Checkbox } from 'react-native-paper';
+
 //import Constants from "expo-constants";
 import SignInButton from "../components/SignInButton";
 import SignInSources from "../components/SignInSources";
@@ -22,20 +25,22 @@ import { useState } from "react";
 import colors from "../styles/colors";
 
 // or any pure javascript modules available in npm
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "@firebase/auth";
-import { auth, provider } from "../firebase";
-import { TextInput } from "react-native-paper";
+// import {
+//   signInWithEmailAndPassword,
+//   createUserWithEmailAndPassword,
+//   signInWithPopup,
+//   GoogleAuthProvider,
+// } from "@firebase/auth";
+// import { auth, provider } from "../firebase";
+// import { TextInput } from "react-native-paper";
 import UserInputBox from "../components/UserInputBox";
 
 export default function SignInScreen({ navigation }) {
   //const [isChecked, setChecked] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
+  const [checked, setChecked] = React.useState(false);
 
   const handleSignUp = () => {
     navigation.navigate("HomeScreen")
@@ -79,7 +84,7 @@ export default function SignInScreen({ navigation }) {
             ]}
           ></View>
         </View>
-        <Text style={[styles.title, { fontSize: 24 }, { fontWeight: "heavy" }]}>
+        <Text style={[styles.title, { fontSize: 24 }, { fontWeight: "bold" }]}>
           Register
         </Text>
         <Text style={[styles.title, { marginBottom: "5%" }]}>
@@ -91,8 +96,32 @@ export default function SignInScreen({ navigation }) {
           fn={"Password"}
           secureTextEntry={true}
           nums={65}
+          right = {
+              <TextInput.Icon
+              name="eye"
+              onPress={() => {
+                setSecureTextEntry(!secureTextEntry);
+                return false;
+              }}
+              color={colors.electric}
+            />
+            }
+          
         />
+
         <SignInButton title={"Sign Up"} onPress={handleSignUp} />
+        <View style={styles.checkbox}>
+        <Checkbox
+        
+            status={checked ? 'checked' : 'unchecked'}
+            onPress={() => {
+              setChecked(!checked);
+            }}
+            color={colors.electric}
+           />
+          <Text style={[{fontSize: 16}, {paddingTop: 5}]}>Remember me</Text>
+
+           </View>
         <View style={styles.barArea}>
           {/* <Checkbox
               color={isChecked ? colors.electric : undefined}
@@ -107,8 +136,11 @@ export default function SignInScreen({ navigation }) {
             // onClick={() => { console.log('Google button clicked') }}
             style={styles.pagination}
           >
-            <Image source={"../assets/googlebutton.PNG"} />
           </Pressable>
+          <View>
+            
+          </View>
+          
         </View>
       </View>
     </SafeAreaView>
@@ -118,7 +150,6 @@ export default function SignInScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     paddingTop: "10%",
     backgroundColor: "#fbf9f9",
   },
@@ -138,6 +169,8 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
   header: {
+    marginTop: 40,
+
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
@@ -162,6 +195,10 @@ const styles = StyleSheet.create({
   },
   pagination: {
     flex: 1,
+    flexDirection: "row",
+  },
+  checkbox: {
+    marginLeft: "8%",
     flexDirection: "row",
   },
   input: {

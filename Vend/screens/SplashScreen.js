@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     width: 130,
     height: 35,
     backgroundColor: colors.electric,
-    marginBottom: 50,
+    marginTop: 35.0,
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     width: 130,
     height: 35,
     backgroundColor: colors.lightGrey,
-    marginBottom: 50,
+    marginTop: 35.0,
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     flex: 1,
+    paddingTop: 50,
   },
   myText: {
     color: 'white',

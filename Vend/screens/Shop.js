@@ -14,14 +14,15 @@ import { useState } from "react";
 
 import Item from "../components/Item";
 import CategoryIcon from "../components/CategoryIcon";
+import SearchBar from "../components/SearchBar";
 
 // import SearchBar from "../components/Searchbar"
 // You can import from local files
 import colors from "../styles/colors";
 
-// Firebase imports
-import { auth, database, col } from "../firebase";
-import { collection, addDoc, getDocs } from "@firebase/firestore";
+// // Firebase imports
+// import { auth, database, col } from "../firebase";
+// import { collection, addDoc, getDocs } from "@firebase/firestore";
 
 function Shop() {
   const [username, setUsername] = useState("");
@@ -29,25 +30,25 @@ function Shop() {
   const [selected, setSelected] = React.useState("");
 
   const [items, setItems] = useState([]);
-  React.useEffect(async () => {
-    col.onSnapshot((querySnapshot) => {
-      const items = [];
-      querySnapshot.forEach((doc) => {
-        const { Name, Price, Filename } = doc.data();
-        items.push({
-          id: doc.id,
-          Filename,
-          Name,
-          Price,
-        });
-      });
-      setItems(items);
-    });
-  }, []);
+  // React.useEffect(async () => {
+  //   col.onSnapshot((querySnapshot) => {
+  //     const items = [];
+  //     querySnapshot.forEach((doc) => {
+  //       const { Name, Price, Filename } = doc.data();
+  //       items.push({
+  //         id: doc.id,
+  //         Filename,
+  //         Name,
+  //         Price,
+  //       });
+  //     });
+  //     setItems(items);
+  //   });
+  // }, []);
 
   return (
     <SafeAreaView style={styles.container}>
-      <Button
+      {/* <Button
         title="Load Items"
         style={styles.button}
         onPress={() =>
@@ -64,8 +65,8 @@ function Shop() {
             })
             .then(console.log("item has been added"))
         }
-      />
-
+      /> */}
+        <SearchBar fn="Username" input={setUsername} />
       <View style={styles.header}>
         {/* <View style={styles.searchBar}>
         <SearchBar fn="Username" input={setUsername} />
@@ -86,21 +87,60 @@ function Shop() {
       </View>
       <View>
         <View style={styles.categoryRow}>
-          <CategoryIcon name="Pants" path={require("../assets/favicon.png")} />
-          <CategoryIcon name="Shirts" path={require("../assets/favicon.png")} />
+          <CategoryIcon name="Shirts" path={require("../assets/tshirt.jpg")} />
+          <CategoryIcon name="Pants" path={require("../assets/panticon.jpg")} />
           <CategoryIcon
             name="Hoodies"
-            path={require("../assets/favicon.png")}
+            path={require("../assets/hoodieicon.jpg")}
           />
           <CategoryIcon
             name="Uniforms"
-            path={require("../assets/favicon.png")}
+            path={require("../assets/unifrom.jpg")}
           />
         </View>
-        <Item
-          header="Soundtrack App"
-          body="Rate soundtracks using a database"
-        />
+        <View style={styles.categoryRow}>
+          <Item
+            header="Cotton Shirt Regular Fit"
+            body="$23.00"
+            path={require("../assets/shirt1.jpg")}
+
+          />
+          <Item
+            header="Flux Hoodie"
+            body="$45.00"
+            path={require("../assets/shirt2.jpg")}
+
+          />
+        </View>
+        <View style={styles.categoryRow}>
+          <Item
+            header="Fremd Soccer Uniform"
+            body="$30.00"
+            path={require("../assets/shirt3.jpg")}
+
+          />
+          <Item
+            header="Gadha Hoodie"
+            body="$35.00"
+            path={require("../assets/shirt4.jpg")}
+
+          />
+        </View>
+        <View style={styles.categoryRow}>
+          <Item
+            header="Striped T Shirt (Green/Yellow)"
+            body="$14.00"
+            path={require("../assets/shirt5.jpg")}
+
+          />
+          <Item
+            header="MUN Hoodie"
+            body="$29.00"
+            path={require("../assets/shirt6.jpg")}
+
+          />
+        </View>
+
       </View>
     </SafeAreaView>
   );
@@ -112,7 +152,8 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     color: colors.slate,
-    padding: 50,
+    padding: 20,
+    paddingTop: 40,
   },
   namePlate: {
     margin: "8%",
@@ -138,6 +179,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   categoryRow: {
+    justifyContent: 'center',
     flexDirection: "row",
   },
 });

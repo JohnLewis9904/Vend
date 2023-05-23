@@ -27,14 +27,9 @@ function SearchBar({ fn, keyboard, secureTextEntry, input, nums }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'red',
-    borderRadius: 8,
-    margin: 20,
-    marginVertical: 20,
   },
   searchIcon: {
     backgroundColor: 'white',
@@ -50,7 +45,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     borderTopLeftRadius: 15,
     borderBottomLeftRadius: 15,
-
+    paddingRight: 100,
     height: 50,
   },
 });

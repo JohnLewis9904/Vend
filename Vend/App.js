@@ -10,6 +10,8 @@ import ShopScreen from "./screens/Shop";
 import ProfileScreen from "./screens/ProfileScreen.js";
 import RegisterScren from "./screens/RegisterScreen";
 import ImageScreen from "./screens/ItemUploadScreen";
+import MainContainer from "./screens/MainContainer";
+import DetailView from "./screens/DetailView.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           options={{ headerShown: false }}
           name="SplashScreen"
           component={SplashScreen}
@@ -41,17 +43,22 @@ export default function App() {
           options={{ headerShown: false }}
           name="ProfileScreen"
           component={ProfileScreen}
-        />
+        />*/}
         <Stack.Screen
+          options={{ headerShown: false }}
+          name="DetailView"
+          component={DetailView}
+        /> 
+         {/* <Stack.Screen
           options={{ headerShown: false }}
           name="ShopScreen"
           component={ShopScreen}
-        />
-        <Stack.Screen
+        />  */}
+        {/* <Stack.Screen
           options={{ headerShown: false }}
           name="ImageScreen"
           component={ImageScreen}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

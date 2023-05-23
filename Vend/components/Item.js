@@ -9,7 +9,7 @@ function Item({header, body, path}) {
       <View style={styles.viewContainer}>
         <Image
         style={styles.viewImage}
-          source={{uri: path}}
+        source={path}
         />
         <Text style={styles.viewHeader}>{header}</Text>
         <Text style={styles.viewBody}>{body}</Text>
@@ -24,16 +24,16 @@ const styles = StyleSheet.create({
     height: 190,
     width: 150,
     borderRadius: 10,
-    backgroundColor: colors.lightestgray,
+    backgroundColor: 'white',
     padding: 10,
     margin:9,
+    marginHorizontal: 14,
   },
   viewImage: {
 
     height: 100,
     width: 130,
     borderRadius: 5,
-    backgroundColor: colors.lightAccentGrey
   },
   viewHeader: {
     fontSize: 14,

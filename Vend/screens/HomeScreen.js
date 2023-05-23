@@ -9,20 +9,27 @@ import {
   ScrollView,
   Pressable,
 } from "react-native";
+import { BottomNavigation } from 'react-native-paper';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+const Tab = createBottomTabNavigator();
+
+
+
 import { useState } from "react";
 import LargeBanner from "../components/LargeBanner";
 import SmallBanner from "../components/SmallBanner";
 import UpdateBanner from "../components/UpdateBanner";
 
-// Firebase imports
-import { auth, database, col } from "../firebase";
-import { collection, addDoc, getDocs } from "@firebase/firestore";
+// // Firebase imports
+// import { auth, database, col } from "../firebase";
+// import { collection, addDoc, getDocs } from "@firebase/firestore";
 
 // You can import from local files
 import colors from "../styles/colors";
 import { Button } from "react-native-paper";
-import { QuerySnapshot } from "firebase/firestore";
+// import { QuerySnapshot } from "firebase/firestore";
 import ItemUploadScreen from "./ItemUploadScreen";
+import Shop from "./ItemUploadScreen";
 
 function HomeScreen({ navigation }) {
   const [selected, setSelected] = React.useState("");
@@ -94,7 +101,7 @@ function HomeScreen({ navigation }) {
                 body="Check out whats releasing this Spring 2023 season!"
                 btnName="Learn More"
                 link="https://www.apple.com/"
-                path={require("../assets/google.jpg")}
+                path={require("../assets/springslae.jpeg")}
               />
           </View>
           <View style={styles.bannerArea}>
@@ -103,7 +110,7 @@ function HomeScreen({ navigation }) {
               body="Spend and Save this Spring reak!"
               btnName="Explore"
               link="https://www.apple.com/"
-              path={require("../assets/splash.png")}
+              path={require("../assets/hotsale.png")}
             />
           </View>
           <View style={styles.bannerArea}>
@@ -127,7 +134,7 @@ function HomeScreen({ navigation }) {
           Shocking Sale!
         </Text>
         {/* Small Sale Area */}
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={[{marginLeft: 0}]}>
           <View style={styles.bannerArea}>
             <SmallBanner
               title="15K Sold Out"
@@ -136,26 +143,27 @@ function HomeScreen({ navigation }) {
           </View>
           <View style={styles.bannerArea}>
             <SmallBanner
-              title="Johns Jimmys!"
+              title="Summer Shirts!"
               path={require("../assets/sai.png")}
             />
           </View>
           <View style={[styles.bannerArea, { marginRight: 20 }]}>
             <SmallBanner
-              title="Shashanks Sambar!"
+              title="BOGO SALE!"
               path={require("../assets/denna.png")}
             />
           </View>
         </ScrollView>
-        <View style={styles.bannerArea}>
+        <View style={[styles.bannerArea, {marginTop: 30}]}>
           <UpdateBanner
-            title="15K Sold Out"
-            body="Check out whats releasing this Spring 2023 season!"
-            btnName="Learn More"
+            title="Support Local Businesses"
+            body="Help endangered businesses in your area"
+            btnName="Donate"
+            path={require("../assets/localbusiness.jpg")}
+
           />
         </View>
       </View>
-      <Pressable
     </SafeAreaView>
   );
 }
@@ -178,6 +186,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
+    marginTop: 30,
   },
   iconPlate: {
     marginLeft: "25%",
