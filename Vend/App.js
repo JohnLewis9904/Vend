@@ -19,7 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
           options={{ headerShown: false }}
           name="SplashScreen"
           component={SplashScreen}
@@ -43,22 +43,22 @@ export default function App() {
           options={{ headerShown: false }}
           name="ProfileScreen"
           component={ProfileScreen}
-        />*/}
+        />
         <Stack.Screen
           options={{ headerShown: false }}
           name="DetailView"
           component={DetailView}
         /> 
-         {/* <Stack.Screen
+         <Stack.Screen
           options={{ headerShown: false }}
           name="ShopScreen"
           component={ShopScreen}
-        />  */}
-        {/* <Stack.Screen
+        /> 
+        <Stack.Screen
           options={{ headerShown: false }}
           name="ImageScreen"
           component={ImageScreen}
-        /> */}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
